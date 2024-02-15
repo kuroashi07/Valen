@@ -11,6 +11,7 @@
 
 <style>
     body {
+        width: 100%;
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -78,10 +79,13 @@
 
     .container-description {
         margin: 30px;
-        width: 40%;
+        width: calc(100% - 60px);
+        max-width: 400px;
         font-size: 24px;
         color: white;
         text-align: center;
+        padding-left: 30px;
+        padding-right: 30px;
     }
 
     #cursor {
@@ -110,9 +114,10 @@
         .container-description {
             margin: 30px;
             width: 100%;
-            font-size: 20px;
+            font-size: 18px;
             color: white;
             text-align: center;
+
         }
     }
 </style>
