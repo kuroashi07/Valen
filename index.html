@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <title>Valen</title>
 
 </head>
@@ -75,9 +75,9 @@
     }
 
 
-    
+
     .container-description {
-        margin: 15px;
+        margin: 30px;
         width: 40%;
         font-size: 24px;
         color: white;
@@ -101,6 +101,18 @@
 
         100% {
             opacity: 0;
+        }
+    }
+
+
+
+    @media (max-width: 768px) {
+        .container-description {
+            margin: 30px;
+            width: 100%;
+            font-size: 24px;
+            color: white;
+            text-align: center;
         }
     }
 </style>
@@ -165,7 +177,7 @@
     }
 
 
-    const animationDuration = 1500; 
+    const animationDuration = 1500;
     setTimeout(() => {
         typeWriter();
     }, animationDuration);
