@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Valen</title>
+
+</head>
+
+<style>
+    body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-image: linear-gradient(to right, rgba(255, 0, 0, 0.5), pink);
+    }
+
+    .container {
+        position: relative;
+        width: 100%;
+        height: 50%;
+        animation: popUp 1.5s ease forwards;
+    }
+
+    .container::before {
+        content: '';
+        width: 70px;
+        height: 200px;
+        border-radius: 50%;
+        border-left: 10px solid green;
+        border-bottom: 10px solid transparent;
+        position: absolute;
+        top: 40%;
+        left: 49%;
+    }
+
+    .container::after {
+        content: '';
+        width: 90px;
+        height: 60px;
+        border-radius: 50%;
+        border-bottom: 20px solid transparent;
+        border-top: 20px solid green;
+        position: absolute;
+        top: 40%;
+        left: 50%;
+    }
+
+    .point {
+        width: 100px;
+        height: 100px;
+        background: rgba(255, 192, 203);
+        background: linear-gradient(180deg, rgba(255, 192, 203, 1) 0%, rgba(253, 29, 29, 1) 100%);
+        position: absolute;
+        border-top-right-radius: 0px;
+        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 200px;
+        border-top-left-radius: 200px;
+    }
+
+    @keyframes popUp {
+        from {
+            transform: translateY(100%);
+        }
+
+        to {
+            transform: translateY(0%);
+        }
+    }
+
+
+    
+    .container-description {
+        margin: 15px;
+        width: 40%;
+        font-size: 24px;
+        color: white;
+        text-align: center;
+    }
+
+    #cursor {
+        position: absolute;
+        bottom: 10px;
+        left: 0;
+        width: 10px;
+        height: 20px;
+        background-color: black;
+        animation: blink 0.7s infinite alternate;
+    }
+
+    @keyframes blink {
+        0% {
+            opacity: 1;
+        }
+
+        100% {
+            opacity: 0;
+        }
+    }
+</style>
+
+<body>
+    <div class="container" id="points-container">
+    </div>
+    <div class="container-description">
+        <span id="text"></span>
+        <span id="cursor"></span>
+    </div>
+
+</body>
+
+<script>
+    const container = document.getElementById("points-container");
+    const numPoints = 10;
+
+    function createPoint() {
+        const point = document.createElement("div");
+        point.classList.add("point");
+        container.appendChild(point);
+
+        point.style.left = "50%";
+        point.style.top = "20%";
+
+        const animation = point.animate(
+            [
+                { transform: "translate(-50%, -50%) rotate(-50deg)" },
+                { transform: "translate(20%, -40%)" }
+            ],
+            {
+                duration: 2000 + Math.random() * 2000,
+                easing: "linear",
+                iterations: Infinity,
+                direction: "alternate",
+            }
+        );
+
+        return { point, animation };
+    }
+
+    function startAnimation() {
+        for (let i = 0; i < numPoints; i++) {
+            createPoint();
+        }
+    }
+
+    startAnimation();
+
+    const text = "I love you, Sheila. Happy Valentine's. I'm sorry for everything. I'll do my best to become the better man that you deserve.";
+    const speed = 50;
+    const containerMessage = document.getElementById('text');
+    let index = 0;
+
+    function typeWriter() {
+        if (index < text.length) {
+            containerMessage.innerHTML += text.charAt(index);
+            index++;
+            setTimeout(typeWriter, speed);
+        }
+    }
+
+
+    const animationDuration = 1500; 
+    setTimeout(() => {
+        typeWriter();
+    }, animationDuration);
+
+</script>
+
+
+</html>
