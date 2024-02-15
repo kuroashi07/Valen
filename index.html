@@ -23,10 +23,9 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100vh;
+        height: 700px;
         margin: 0;
         background-image: linear-gradient(to right, rgba(255, 0, 0, 0.5), pink);
-        overflow: hidden;
     }
 
     .container {
@@ -63,6 +62,7 @@
     .point {
         width: 100px;
         height: 100px;
+        top: 21%;
         background: rgba(255, 192, 203);
         background: linear-gradient(180deg, rgba(255, 192, 203, 1) 0%, rgba(253, 29, 29, 1) 100%);
         position: absolute;
@@ -85,7 +85,6 @@
 
 
     .container-description {
-        margin: 75px 0;
         width: calc(100% - 60px);
         max-width: 60%;
         font-size: 24px;
@@ -107,12 +106,7 @@
 
 
     @media (max-width: 768px) {
-        .container {
-            height: 40%;
-        }
-
         .container-description {
-            margin: 75px 0;
             width: 100%;
             font-size: 18px;
             color: white;
@@ -143,7 +137,6 @@
         container.appendChild(point);
 
         point.style.left = "50%";
-        point.style.top = "20%";
 
         const animation = point.animate(
             [
